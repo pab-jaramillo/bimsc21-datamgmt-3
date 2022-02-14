@@ -59,7 +59,7 @@ async function compute() {
   );
 
 
-  //console.log(res);
+  console.log(res);
 
   doc = new rhino.File3dm();
 
@@ -91,6 +91,11 @@ async function compute() {
     if ( rhinoObject.geometry().userStringCount > 0 ) {
       const g_userStrings = rhinoObject.geometry().getUserStrings()
       rhinoObject.attributes().setUserString(g_userStrings[0][0], g_userStrings[0][1])
+
+      //assignment
+
+      const cost = rhinoObject.geometry().getUserStrings()[1]
+      console.log(cost)
       
     }
   }
