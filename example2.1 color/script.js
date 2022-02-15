@@ -5,16 +5,32 @@ import rhino3dm from "https://cdn.jsdelivr.net/npm/rhino3dm@7.11.1/rhino3dm.modu
 import { RhinoCompute } from "https://cdn.jsdelivr.net/npm/compute-rhino3d@0.13.0-beta/compute.rhino3d.module.js";
 import { Rhino3dmLoader } from "https://cdn.jsdelivr.net/npm/three@0.124.0/examples/jsm/loaders/3DMLoader.js";
 
-const definitionName = "rnd_node.gh";
+const definitionName = "Tensegrity_SimpleExample.gh";
 
 // Set up sliders
-const radius_slider = document.getElementById("radius");
+const radius_slider = document.getElementById("Radius");
 radius_slider.addEventListener("mouseup", onSliderChange, false);
 radius_slider.addEventListener("touchend", onSliderChange, false);
 
-const count_slider = document.getElementById("count");
-count_slider.addEventListener("mouseup", onSliderChange, false);
-count_slider.addEventListener("touchend", onSliderChange, false);
+const segments_slider = document.getElementById("Segments");
+segments_slider.addEventListener("mouseup", onSliderChange, false);
+segments_slider.addEventListener("touchend", onSliderChange, false);
+
+const height_slider = document.getElementById("Height");
+height_slider.addEventListener("mouseup", onSliderChange, false);
+height_slider.addEventListener("touchend", onSliderChange, false);
+
+const compress_slider = document.getElementById("Compress");
+compress_slider.addEventListener("mouseup", onSliderChange, false);
+compress_slider.addEventListener("touchend", onSliderChange, false);
+
+const expands_slider = document.getElementById("Expands");
+expands_slider.addEventListener("mouseup", onSliderChange, false);
+expands_slider.addEventListener("touchend", onSliderChange, false);
+
+const sthickness_slider = document.getElementById("Sthickness");
+sthickness_slider.addEventListener("mouseup", onSliderChange, false);
+sthickness_slider.addEventListener("touchend", onSliderChange, false);
 
 const loader = new Rhino3dmLoader();
 loader.setLibraryPath("https://cdn.jsdelivr.net/npm/rhino3dm@0.15.0-beta/");
@@ -45,19 +61,34 @@ async function compute() {
   const param1 = new RhinoCompute.Grasshopper.DataTree("Radius");
   param1.append([0], [radius_slider.valueAsNumber]);
 
-  const param2 = new RhinoCompute.Grasshopper.DataTree("Count");
-  param2.append([0], [count_slider.valueAsNumber]);
+  const param2 = new RhinoCompute.Grasshopper.DataTree("Segments");
+  param2.append([0], [segments_slider.valueAsNumber]);
+
+  const param3 = new RhinoCompute.Grasshopper.DataTree("Height");
+  param3.append([0], [height_slider.valueAsNumber]);
+
+  const param4 = new RhinoCompute.Grasshopper.DataTree("Compress");
+  param4.append([0], [compress_slider.valueAsNumber]);
+
+  const param5 = new RhinoCompute.Grasshopper.DataTree("Expands");
+  param5.append([0], [expands_slider.valueAsNumber]);
+
+  const param6 = new RhinoCompute.Grasshopper.DataTree("Sthickness");
+  param6.append([0], [sthickness_slider.valueAsNumber]);
 
   // clear values
   const trees = [];
   trees.push(param1);
   trees.push(param2);
+  trees.push(param3);
+  trees.push(param4);
+  trees.push(param5);
+  trees.push(param6);
 
   const res = await RhinoCompute.Grasshopper.evaluateDefinition(
     definition,
     trees
   );
-
 
   console.log(res);
 
@@ -150,14 +181,14 @@ let scene, camera, renderer, controls;
 function init() {
   // create a scene and a camera
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(1, 1, 1);
+  scene.background = new THREE.Color(0x9ACD32); 
   camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
     0.1,
-    1000
+    100
   );
-  camera.position.z = -30;
+  camera.position.z = -5;
 
   // create the renderer and add it to the html
   renderer = new THREE.WebGLRenderer({ antialias: true });

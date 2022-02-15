@@ -10,9 +10,9 @@
             #overlay {z-index: 1; width: 100%}
 
             #loader {
-                border: 5px solid #f3f3f3; /* Light grey */
-                border-top: 5px solid #3d3d3d; /* Grey */
-                border-radius: 50%;
+                border: 5px solid #9dff00; /* Light grey */
+                border-top: 5px solid #448637; /* Grey */
+                border-radius: 100%;
                 width: 40px;
                 height: 40px;
                 animation: spin 1s linear infinite;
@@ -33,12 +33,33 @@
         <div id="container">
             <div id="overlay">
                 <div>
-                    <input type="range" id="count" name="count" min="1" max="50" value="10" step="1">
-                    <label for="count">Count</label>
+                    <input type="range" id="Radius" name="Radius" min="1" max="10" value="6" step="1">
+                    <label for="Radius">Radius</label>
                 </div>
+
                 <div>
-                    <input type="range" id="radius" name="radius" min="1" max="10" value="7" step="1">
-                    <label for="radius">Radius</label>
+                    <input type="range" id="Segments" name="Segments" min="3" max="8" value="5" step="1">
+                    <label for="Segments">Segments</label>
+                </div>
+
+                <div>
+                    <input type="range" id="Height" name="Height" min="2" max="8" value="4" step="1">
+                    <label for="Height">Height</label>
+                </div>
+                    
+                <div>
+                    <input type="range" id="Compress" name="Compress" min="0" max="10" value="4" step="1">
+                    <label for="Compress">Compress</label>
+                </div>
+
+                <div>
+                    <input type="range" id="Expands" name="Expands" min="0" max="10" value="5" step="1">
+                    <label for="Expands">Expands</label>
+                </div>
+
+                <div>
+                    <input type="range" id="Sthickness" name="Sthickness" min="1" max="5" value="1" step="1">
+                    <label for="Sthickness">Sthickness</label>
                 </div>
 
             </div>
